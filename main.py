@@ -1,4 +1,5 @@
 import time
+import copy
 import rtmidi
 from dataclasses import dataclass
 from collections import namedtuple
@@ -57,3 +58,9 @@ with midiin:
                     print(message.message)
                     midiout.send_message(list(message.message))
                     loop_index += 1
+
+            for message in loop:
+                if message.message.type == PRESSED:
+                    new_message = copy.copy(message)
+                    new_message.type = RELEASED
+                    midiout.send_message(list(message.message))
