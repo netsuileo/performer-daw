@@ -1,1 +1,1 @@
-rtmidi==2.3.4
+python-rtmidi==1.4.9
